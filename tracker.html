@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily tracker</title>
+    <link rel="stylesheet" href="tracker.css"/>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Jua' rel='stylesheet'>
+    <script src="tracker.js" defer></script>
+  </head>
+  
+  <body class="background">
+    <h1>Daily Tracker</h1>
+    <div class="container-budget">
+      <fieldset>
+        <h2>Budget Tracker</h2>
+      </fieldset>
+
+      <div class="content-left floatleft">
+        <div class="enter-budget-box">
+          <label for="budget">Enter Your Budget <input type="text" id="budget"/></label><br>
+          <label for="currency">Select Currency</label> 
+            <select name="" id="currency">
+              <option value="" disabled selected> ----- </option>               
+              <option value="€">€</option>
+              <option value="$">$</option>
+            </select><br>
+              <button id="add-budget-btn" class="add-budget-btn"> Start </button>
+              <button id="reset-app-btn" class="reset-app-btn"> Reset </button>
+            </div>
+            <div class="add-expense-box">
+              <label for="expense"> Enter Your Expense Title <input type="text" id="expense-title"/></label>
+              <label for="expense-amount"> Enter Expense Amount  <input type="text" id="expense-amount"/></label><br>
+              <button id="add-expense-btn" class="add-expense-btn"> Add Expense </button>
+            </div>
+          </div>
+          <hr>
+          <div class="content-right floatright">
+            <div>
+                <p>Budget</p>
+                <p>Expenses</p>
+                <p>Balance</p> 
+            </div>
+            <div class="expenses-items">
+              <div class="budget-amount"><span id="currency-symbol">$</span> <span id="budget-amount">0</span></div>
+              <div class="expenses-amount"><span id="currency-symbol">$</span> <span id="expenses-amount">0</span></div>
+              <div class="balance-amount"><span id="currency-symbol">$</span> <span id="balance-amount">0</span></div>
+            </div>
+            <hr>
+         </div>
+          <div class="expenses">
+              <table style="width:80%" class="center">
+                <thead>
+                  <tr>
+                      <td>Expense Title</td>
+                      <td>Expense Amount</td>                            
+                      <td>Delete</td>                            
+                  </tr>                        
+                </thead>                        
+              </table> 
+              <div id="expense-list"></div>
+          </div>
+          <hr>
+
+    <div class="container-nutrition">
+      <fieldset>
+        <h2>Nutrition Tracker</h2>
+      </fieldset><br>
+      <label for="food-item"> Enter Your Food Item : <input type="text" id="food-item"/></label>
+      <label for="macro-input"> Enter The Macros For Your Food Amount - </label><br>
+      <label for="protein">Protein(g):<input type="number" id="protein"></label>
+      <label for="Carbs">Carbs(g):<input type="number" id="carbs"></label>
+      <label for="Fats">Fats(g):<input type="number" id="fats"></label>
+      <label for="Calories">Calories(g):<input type="number" id="calories"></label><br>
+      <button id="add-food-btn" class="add-food-btn"> Enter </button>
+      <br>
+      <hr>
+      <div class="content-right floatright">
+        <div>
+            <p> Total </p>
+            <p> Eaten </p>
+            <p> Remaining </p> 
+        </div>
+        <div class="nutrition-item">
+          <div class="total-macros"><span id="total-macros">g</span></div>
+          <div class="total-eaten"><span id="expenses-amount">g</span></div>
+          <div class="total-remaining"><span id="balance-amount">g</span></div>
+        </div>
+      </div>
+      <hr>
+      <p class="p1"> Don't know how to calculate your macros? Ask your personal NutriBudget assistant, NutriBuddy! (located in the right hand corner of the page)</p>
+      <br>
+      <hr>
+    <hr>
+    <div class="nutrition">
+      <table style="width:80%" class="center">
+        <thead>
+          <tr>
+              <td> Food Title </td>
+              <td div class="row">
+                <div class="column"> Protein </div>
+                <div class="column"> Carbs </div>
+                <div class="column"> Fats </div>
+                <div class="column"> Calories </div>
+              </td>                            
+              <td> Delete </td>                            
+          </tr>                        
+        </thead>                        
+      </table> 
+      <div id="nutrition"></div>
+  </div>
+  <hr>
+    <!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<body>
+  <meta charset="utf-8">
+    <!-- <title>Chatbot in JavaScript | CodingNepal</title> -->
+    <link rel="stylesheet" href="tracker.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script src="chatbot.js" defer></script>
+    <button class="chatbot-toggler">
+      <span class="material-symbols-rounded">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+      <header>
+        <h2>Nutribuddy</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Hi ! 👋<br>How can I help you today?</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+      </div>
+    </div>
+  <script>
+    let MyProteinObject = localStorage.getItem("myProteinObject")
+    let MyCarbsObject = localStorage.getItem("myCarbsObject")
+    let MyFatObject = localStorage.getItem("myFatObject")
+    let MyCaloriesObject = localStorage.getItem("myPCaloriesObject")
+
+  </script>
+  </body>
+</html>

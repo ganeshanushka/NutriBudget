@@ -1,0 +1,27 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+#question {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#askButton {
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+#answer {
+    margin-top: 20px;
+}

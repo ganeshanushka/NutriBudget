@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+   <head>
+       <title>Macro Calculator</title>
+       <link rel="stylesheet" href="macros.css"/>
+       <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+       <link href='https://fonts.googleapis.com/css?family=Jua' rel='stylesheet'>
+   </head>
+
+   <body class="background">
+           <h1>Macro calculator</h1>
+       <form method="post" id="macroCalculator">
+            <h2> Enter your information </h2>
+            <label for="age"> Age: <input id="age" name="age" type="number" min="13" max="120" required /></label>
+            <label for="sex"> Sex: <select id="sex" name="sex" required>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select></label>
+            <label for="gender"> Gender: <select id="gender" name="gender" required>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+                <option value="2">Non-binary</option>
+            </select></label>
+            <label for="height"> Height (cm):  <input type="number" id="height" name="height" required></label>
+            <label for="weight"> Weight (kg):  <input type="number" id="weight" name="weight" required></label>
+            <label for="activity"> Activity Level: <select id="activity" name="activity">
+                <option value="0">Little or no Exercise</option>
+                <option value="1">Light Exercise (3-5d/week)</option>
+                <option value="2">Hard Exercise (3-5d/week)</option>
+                <option value="3">Hard Exercise (6-7d/week)</option>
+            </select> </label>
+            <label for="goal"> Goal: <select id="goal" name="goal">
+                <option value ="0"> Maintain Weight</option>
+                <option value ="1"> Lose Weight</option>
+                <option value ="2"> Gain Weight</option>
+            </select></label>
+            <button type="button" class="button-calculate" onclick="calculateNutrients()"> Calculate </button>
+       </form>
+
+       <div class="middle-container">
+        <table id="resultTable" width="800px" height="400px">
+            <thead>
+                <tr>
+                    <th>Macro nutrients</th>
+                    <th>Recommended Results</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Protein</td>
+                    <td id="proteinResult"></td>
+                </tr>
+                <tr>
+                    <td>Carbs</td>
+                    <td id="carbsResult"></td>
+                </tr>
+                <tr>
+                    <td>Fat</td>
+                    <td id="fatResult"></td>
+                </tr>
+                <tr>
+                    <td>Calories</td>
+                    <td id="caloriesResult"></td>
+                </tr>
+            </tbody>
+        </table>
+       </div>
+
+       <div class="lower-container">
+        <h2> Your daily macronutrient goal is ready! Let's go to our daily tracker </h2><br>
+        <button type="button" class="button-onwards"> <a href="tracker.html"> Daily tracker </a></button>
+       </div>
+
+       <script>
+           function calculateNutrients() {
+               const age = document.getElementById('age').value;
+               const sex = document.getElementById('sex').value;
+               const height = document.getElementById('height').value;
+               const weight = document.getElementById('weight').value;
+               const activity = document.getElementById('activity').value;
+               const goal = document.getElementById('goal').value;
+
+               // Uses the Mifflin-St Jeor Equation for bmr
+               let sexKcal = sex == 0 ? 5 : -161;
+               let bmr = 10 * weight + 6.25 * height - 5 * age + sexKcal;
+
+               let activityFactors = [1.2, 1.375, 1.55, 1.725];
+               let calories = bmr * (activityFactors[activity]) + (goal == 0 ? 0 : goal ==1 ? -500 :500);
+
+               let protein = calories * 0.3 / 4;
+               let carbs = calories * 0.4 / 4;
+               let fat = calories * 0.3 / 9;
+
+               document.getElementById("proteinResult").innerHTML = Math.round(protein) + "g"; 
+               document.getElementById("carbsResult").innerHTML = Math.round(carbs) + "g"; 
+               document.getElementById("fatResult").innerHTML = Math.round(fat) + "g"; 
+               document.getElementById("caloriesResult").innerHTML = Math.round(calories) + " cals"; 
+               document.getElementById("resultTable").style.display = "table";
+           }
+        const myProteinObject = document.getElementById("proteinResult").value;
+        const myCarbsbject = document.getElementById("carbsResults").value;
+        const myFatObject = document.getElementById("fatResults").value;
+        const myCaloriestObject = document.getElementById("caloriesResults").value;
+
+        localStorage.setItem('myProteinObject', 'MyProteinObject');
+        localStorage.setItem('myCarbsObject', 'MyCarbsObject');
+        localStorage.setItem('myFatObject', 'MyFatObject');
+        localStorage.setItem('myCaloriesObject', 'MyCaloriesObject');
+
+       </script>
+   </body>
+</html>
